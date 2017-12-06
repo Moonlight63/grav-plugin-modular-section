@@ -1,0 +1,346 @@
+title: Styled Section
+@extends: default
+
+form:
+  fields:
+    tabs:
+      fields:
+        formbuilder:
+          type: tab
+          title: FormBuilder
+          fields:
+            header.form.name:
+              type: text
+              label: Form Name
+              placeholder: "Form Name"
+
+            header.form.action:
+              type: text
+              label: "Action"
+              placeholder: "Where to handle results (In case of ajax)"
+              toggleable: true
+            header.form.template:
+              type: text
+              label: "Template"
+              placeholder: "Form Response Template (In case of ajax)"
+              toggleable: true
+            header.form.refresh_prevention:
+              type: toggle
+              label: Prevent Refresh
+              highlight: 1
+              options:
+                1: PLUGIN_ADMIN.YES
+                0: PLUGIN_ADMIN.NO
+              toggleable: true
+              validate:
+                type: bool
+            header.form.id:
+              type: text
+              label: "Id"
+              placeholder: "Override Form ID"
+              toggleable: true
+            header.form.classes:
+              type: text
+              label: "Classes"
+              placeholder: "Add CSS Classes"
+              toggleable: true
+
+            header.form.fields:
+              type: selectableList
+              label: Form Fields
+              validate:
+                type: list
+              fields:
+                type:
+                  type: select
+                  options:
+                    captcha: Captcha
+                    checkbox: Checkbox
+                    checkboxes: Checkboxes
+                    date: Date
+                    display: Display
+                    email: Email
+                    file: File
+                    hidden: Hidden
+                    honeypot: Honeypot
+                    password: Password
+                    radio: Radio
+                    range: Range
+                    select: Select
+                    spacer: Spacer
+                    text: Text
+                    textarea: Text Area
+                label:
+                  type: text
+                  placeholder: Label
+                autocomplete:
+                  type: toggle
+                  highlight: 1
+                  options:
+                    1: PLUGIN_ADMIN.YES
+                    0: PLUGIN_ADMIN.NO
+                  validate:
+                    type: bool
+                classes:
+                  type: text
+                  placeholder: ".Classes"
+                id:
+                  type: text
+                  placeholder: "#Id"
+                disabled:
+                  type: toggle
+                  highlight: 1
+                  options:
+                    1: PLUGIN_ADMIN.YES
+                    0: PLUGIN_ADMIN.NO
+                  validate:
+                    type: bool
+                help:
+                  type: text
+                  placeholder: Tooltip Help
+                novalidate:
+                  type: toggle
+                  highlight: 1
+                  options:
+                    1: PLUGIN_ADMIN.YES
+                    0: PLUGIN_ADMIN.NO
+                  validate:
+                    type: bool
+                placeholder:
+                  type: text
+                  placeholder: Placeholder
+                readonly:
+                  type: toggle
+                  highlight: 1
+                  options:
+                    1: PLUGIN_ADMIN.YES
+                    0: PLUGIN_ADMIN.NO
+                  validate:
+                    type: bool
+                size:
+                  type: select
+                  options:
+                    medium: Medium
+                    x-small: X-Small
+                    small: Small
+                    large: Large
+                    long: Long
+                style:
+                  type: text
+                  placeholder: Field Style
+                name:
+                  type: text
+                  placeholder: Field Name
+                title:
+                  type: text
+                  placeholder: Field Title
+                multiple:
+                  type: toggle
+                  highlight: 1
+                  options:
+                    1: PLUGIN_ADMIN.YES
+                    0: PLUGIN_ADMIN.NO
+                  validate:
+                    type: bool
+                validate:
+                  type: advancedArray
+                  validate:
+                    type: list
+                  options:
+                    required:
+                      type: toggle
+                      highlight: 1
+                      options:
+                        1: PLUGIN_ADMIN.YES
+                        0: PLUGIN_ADMIN.NO
+                      validate:
+                        type: bool
+                options:
+                  type: array
+                  placeholder_key: Value
+                  placeholder_value: Label
+                default:
+                  type: text
+                  placeholder: Default Field Value
+
+            header.form.process:
+              type: selectableList
+              label: Form Process
+              validate:
+                type: list
+              fields:
+                email:
+                  type: advancedArray
+                  validate:
+                    type: list
+                  options:
+                    from:
+                      type: text
+                      default: "{{ form.value.email }}"
+                      placeholder: "Email sent from:"
+                    to:
+                      type: text
+                      default: "{{ config.plugins.email.to }}"
+                      placeholder: "Send Email To:"
+                    subject:
+                      type: text
+                      default: "Contact by {{ form.value.name|e }}"
+                      placeholder: "Email Subject Line"
+                    body:
+                      type: textarea
+                      default: "{% include 'forms/data.html.twig' %}"
+                      placeholder: Form Data (Probably shouldn't change this...)
+                redirect:
+                  type: text
+                  placeholder: "/path/to/location"
+                display:
+                  type: text
+                  placeholder: "Form Data Submission Page"
+                  default: thankyou
+                message:
+                  type: text
+                  placeholder: "Submission Feedback Message"
+                  default: "Thank you for your feedback!"
+                save:
+                  type: advancedArray
+                  validate:
+                    type: list
+                  options:
+                    fileprefix:
+                      type: text
+                      default: "feedback-"
+                    dateformat:
+                      type: text
+                      default: "Ymd-His-u"
+                    body:
+                      type: textarea
+                      default: "{% include 'forms/data.html.twig' %}"
+                      placeholder: Form Data (Probably shouldn't change this...)
+                    operation:
+                      type: text
+                      default: "create"
+                captcha:
+                  type: advancedArray
+                  validate:
+                    type: list
+                  options:
+                    recaptcha_secret:
+                      type: text
+                      placeholder: "ENTER_YOUR_CAPTCHA_SECRET_KEY"
+                reset:
+                  type: toggle
+                  highlight: 1
+                  options:
+                    1: PLUGIN_ADMIN.YES
+                    0: PLUGIN_ADMIN.NO
+                  validate:
+                    type: bool
+
+            header.form.buttons:
+              type: selectableList
+              label: Form Buttons
+              validate:
+                type: list
+              fields:
+                type:
+                  type: select
+                  options:
+                    button: Button
+                    submit: Submit
+                    reset: Reset
+                value:
+                  type: text
+                  placeholder: "Text Shown"
+                  default: "Submit"
+                url:
+                  type: text
+                  placeholder: "Link URL"
+                id:
+                  type: text
+                  placeholder: "Button CSS id"
+                classes:
+                  type: text
+                  placeholder: "Button CSS Classes"
+                outerclasses:
+                  type: text
+                  placeholder: "Button CSS Outer Classes"
+                disabled:
+                  type: toggle
+                  highlight: 1
+                  options:
+                    1: PLUGIN_ADMIN.YES
+                    0: PLUGIN_ADMIN.NO
+                  validate:
+                    type: bool
+
+        style:
+          type: tab
+          title: "Style"
+          fields:
+            sectionstyle:
+              type: section
+              title: "Section"
+              underline: true
+              fields:
+                header.section.style:
+                  type: advancedArray
+                  label: Section Style
+                  placeholder_key: "Attribute"
+                  placeholder_value: "Value"
+                  toggleable: true
+                  import@:
+                    type: data/cssfields
+                    context: blueprints://
+                  validate:
+                    type: list
+                header.section.class:
+                  type: text
+                  label: Section Class(es)
+                  toggleable: true
+                header.section.extra:
+                  type: array
+                  label: Section Extra Data
+                  placeholder_key: "Attribute"
+                  placeholder_value: "Value"
+                  toggleable: true
+
+            contentstyle:
+              type: section
+              title: "Content"
+              underline: true
+              fields:
+                header.content.style:
+                  type: advancedArray
+                  label: Content Style
+                  placeholder_key: "Attribute"
+                  placeholder_value: "Value"
+                  toggleable: true
+                  import@:
+                    type: data/cssfields
+                    context: blueprints://
+                  validate:
+                    type: list
+                header.content.class:
+                  type: text
+                  label: Content Class(es)
+                  default: "container "
+                  toggleable: true
+                header.content.extra:
+                  type: array
+                  label: Content Extra Data
+                  placeholder_key: "Attribute"
+                  placeholder_value: "Value"
+                  toggleable: true
+                
+        advanced:
+          fields:
+            columns:
+              fields:
+                column1:
+                  fields:
+                    name:
+                      default: modular/text
+                      @data-options: '\Grav\Common\Page\Pages::modularTypes'
+                
+                
+                    

@@ -1,0 +1,115 @@
+title: PLUGIN_ADMIN.MODULAR
+@extends:
+    type: default
+    context: blueprints://pages
+
+form:
+  fields:
+    tabs:
+      type: tabs
+      active: 1
+
+      fields:
+        style:
+          type: tab
+          title: "Style"
+          fields:
+            sectionstyle:
+              type: section
+              title: "Section"
+              underline: true
+              fields:
+                header.section.style:
+                  type: advancedArray
+                  label: Section Style
+                  placeholder_key: "Attribute"
+                  placeholder_value: "Value"
+                  toggleable: true
+                  import@:
+                    type: data/cssfields
+                    context: blueprints://
+                  validate:
+                    type: list
+                header.section.class:
+                  type: text
+                  label: Section Class(es)
+                  toggleable: true
+                header.section.extra:
+                  type: array
+                  label: Section Extra Data
+                  placeholder_key: "Attribute"
+                  placeholder_value: "Value"
+                  toggleable: true
+
+            contentstyle:
+              type: section
+              title: "Content"
+              underline: true
+              fields:
+                header.content.style:
+                  type: advancedArray
+                  label: Content Style
+                  placeholder_key: "Attribute"
+                  placeholder_value: "Value"
+                  toggleable: true
+                  import@:
+                    type: data/cssfields
+                    context: blueprints://
+                  validate:
+                    type: list
+                header.content.class:
+                  type: text
+                  label: Content Class(es)
+                  default: "container "
+                  toggleable: true
+                header.content.extra:
+                  type: array
+                  label: Content Extra Data
+                  placeholder_key: "Attribute"
+                  placeholder_value: "Value"
+                  toggleable: true
+
+        advanced:
+          fields:
+            columns:
+              fields:
+                column1:
+                  fields:
+                    name:
+                      default: modular/text
+                      @data-options: '\Grav\Common\Page\Pages::modularTypes'
+        content:
+          fields:
+
+            header.content.items:
+              type: select
+              label: PLUGIN_ADMIN.ITEMS
+              default: '@self.modular'
+              options:
+                '@self.modular': Modular Children
+
+            header.content.order.by:
+              type: select
+              label: PLUGIN_ADMIN.ORDER_BY
+              default: date
+              options:
+                folder: PLUGIN_ADMIN.FOLDER
+                title: PLUGIN_ADMIN.TITLE
+                date: PLUGIN_ADMIN.DATE
+                default: PLUGIN_ADMIN.DEFAULT
+
+            header.content.order.dir:
+              type: select
+              label: PLUGIN_ADMIN.ORDER
+              default: desc
+              options:
+                asc: PLUGIN_ADMIN.ASCENDING
+                desc: PLUGIN_ADMIN.DESCENDING
+
+            header.process:
+              type: ignore
+            content:
+              type: ignore
+            uploads:
+              type: ignore
+

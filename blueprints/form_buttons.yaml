@@ -1,0 +1,20 @@
+form:
+  fields:
+    .type:
+          name: ButtonType
+          type: select
+          label: Button Type
+          classes: fancy
+          options:
+            submit: Submit
+            reset: Reset
+    .value:
+          name: ButtonValue
+          type: text
+          label: Button Value
+          classes: fancy
+    .classes:
+          name: ButtonClasses
+          type: text
+          label: Button Classes
+          classes: fancy

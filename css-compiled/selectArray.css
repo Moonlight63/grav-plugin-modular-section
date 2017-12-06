@@ -1,0 +1,38 @@
+form [data-grav-select-array-type="row"] {
+  display: inline-block;
+  width: 100%;
+  margin-bottom: 20px; }
+  form [data-grav-select-array-type="row"] span {
+    padding: 0.5rem;
+    display: inline-block;
+    line-height: 1.7;
+    cursor: pointer; }
+    form [data-grav-select-array-type="row"] span[data-grav-advanced-array-action="sort"] {
+      cursor: move; }
+  form [data-grav-select-array-type="row"] .selectize-input {
+    padding: 0.425rem 30px 0.425rem 10px; }
+  form [data-grav-select-array-type="row"] > .form-select-array-wrapper {
+    width: 40%;
+    display: inline-block;
+    vertical-align: top;
+    padding: 0 0.5rem; }
+  form [data-grav-select-array-type="row"] > .form-select-array-value-wrapper:after {
+    margin-top: 0;
+    border: 0;
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    line-height: 0;
+    pointer-events: none; }
+  form [data-grav-select-array-type="row"].selectMultiline > .form-select-array-value-wrapper {
+    padding-left: 12.5%; }
+  form [data-grav-select-array-type="row"]:not(.selectMultiline) > .form-select-array-value-wrapper {
+    display: inline-block;
+    position: absolute;
+    width: 60%; }
+  form [data-grav-select-array-type="row"] input[type=text] {
+    width: 40%;
+    float: left;
+    margin: 0 5px 5px 0; }
+
+/*# sourceMappingURL=selectArray.css.map */

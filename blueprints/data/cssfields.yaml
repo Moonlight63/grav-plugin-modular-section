@@ -1,0 +1,199 @@
+form:
+  options:
+    margin:
+      type: text
+      group: margin
+    margin-left:
+      type: text
+      group: margin
+    margin-right:
+      type: text
+      group: margin
+    margin-bottom:
+      type: text
+      group: margin
+    margin-top:
+      type: text
+      group: margin
+    padding:
+      type: text
+      group: padding
+    padding-left:
+      type: text
+      group: padding
+    padding-right:
+      type: text
+      group: padding
+    padding-bottom:
+      type: text
+      group: padding
+    padding-top:
+      type: text
+      group: padding
+    background-color:
+      type: colorpicker
+      group: background
+    background-image:
+      type: text
+      group: background
+    background-repeat:
+      type: select
+      group: background
+      options:
+        no-repeat: No Repeat
+        repeat: Repeat
+        repeat-x: Repeat X
+        repeat-y: Repeat Y
+    background-position:
+      type: select
+      group: background
+      options:
+        left top: Top Left
+        center top: Top Center
+        right top: Top Right
+        left center: Left
+        center center: Center
+        right center: Right
+        left bottom: Bottom Left
+        center bottom: Bottom Center
+        right bottom: Bottom Right
+    display:
+      type: select
+      group: style
+      options:
+        block: Block
+        inline: Inline
+        inline-block: Inline Block
+        none: None
+    width:
+      type: text
+      group: style
+    height:
+      type: text
+      group: style
+    max-width:
+      type: text
+      group: style
+    max-height:
+      type: text
+      group: style
+    min-width:
+      type: text
+      group: style
+    min-height:
+      type: text
+      group: style
+    color:
+      type: colorpicker
+      displayName: Font Color
+      group: style
+    border-style:
+      type: select
+      group: Border
+      options:
+        solid: Solid
+        dotted: Dotted
+        dashed: Dashed
+        double: Double
+        groove: Groove
+        ridge: Ridge
+        inset: Inset
+        outset: Outset
+        none: None
+    border-top-style:
+      type: select
+      group: Border
+      options:
+        solid: Solid
+        dotted: Dotted
+        dashed: Dashed
+        double: Double
+        groove: Groove
+        ridge: Ridge
+        inset: Inset
+        outset: Outset
+        none: None
+    border-bottom-style:
+      type: select
+      group: Border
+      options:
+        solid: Solid
+        dotted: Dotted
+        dashed: Dashed
+        double: Double
+        groove: Groove
+        ridge: Ridge
+        inset: Inset
+        outset: Outset
+        none: None
+    border-left-style:
+      type: select
+      group: Border
+      options:
+        solid: Solid
+        dotted: Dotted
+        dashed: Dashed
+        double: Double
+        groove: Groove
+        ridge: Ridge
+        inset: Inset
+        outset: Outset
+        none: None
+    border-right-style:
+      type: select
+      group: Border
+      options:
+        solid: Solid
+        dotted: Dotted
+        dashed: Dashed
+        double: Double
+        groove: Groove
+        ridge: Ridge
+        inset: Inset
+        outset: Outset
+        none: None
+    border-width:
+      type: text
+      group: Border
+    border-top-width:
+      type: text
+      group: Border
+    border-bottom-width:
+      type: text
+      group: Border
+    border-left-width:
+      type: text
+      group: Border
+    border-right-width:
+      type: text
+      group: Border
+    border-radius:
+      type: text
+      group: Border
+    border-top-left-raduis:
+      type: text
+      group: Border
+    border-top-right-radius:
+      type: text
+      group: Border
+    border-bottom-left-radius:
+      type: text
+      group: Border
+    border-bottom-right-radius:
+      type: text
+      group: Border
+    border-color:
+      type: colorpicker
+      group: Border
+    border-top-color:
+      type: colorpicker
+      group: Border
+    border-bottom-color:
+      type: colorpicker
+      group: Border
+    border-left-color:
+      type: colorpicker
+      group: Border
+    border-right-color:
+      type: colorpicker
+      group: Border

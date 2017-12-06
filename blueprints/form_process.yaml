@@ -1,0 +1,18 @@
+form:
+  fields:
+    .message: &message
+          name: Message
+          type: text
+          label: Process Message
+          classes: fancy
+    .display: &display
+          name: Display
+          type: text
+          toggleable: true
+          label: Display Page after Submit
+          classes: fancy
+    .email.subject: &email.subject
+          name: EmailSubject
+          type: text
+          label: Email Subject
+          classes: fancy

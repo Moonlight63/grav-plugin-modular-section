@@ -1,0 +1,52 @@
+
+{#{{ dump(fields) }}#}
+<div class="form-row" data-grav-select-array-type="row">
+    <span data-grav-select-array-action="sort" class="fa fa-bars selectSortHandle"></span>
+    <span data-grav-select-array-action="rem" class="fa fa-minus"></span>
+    <span data-grav-select-array-action="add" class="fa fa-plus"></span>
+    <div class="form-select-array-wrapper"
+
+        {% if key is not empty %}
+            data-select-array-old-key="{{ key }}"
+            {% if key in fields|keys %}
+            data-select-array-value-holder="
+                {%- filter replace({'   ': ' ', '\n': ' '})|e('html_attr') -%}
+                    {% if 'name' not in (fields[key])|keys %}
+                        {% set newfield = {name: selectFieldName ~ key} %}
+                        {% for fkey, fval in fields[key] %}
+                            {% set newfield = newfield|merge({(fkey):(fval)}) %}
+                        {% endfor %}
+                    {% else %}
+                        {% set newfield = {} %}
+                        {% for fkey, fval in fields[key] %}
+                            {% set newfield = newfield|merge({(fkey):(fval)}) %}
+                        {% endfor %}
+                        {% set newfield = newfield|merge({name: selectFieldName ~ fields[key]['name']}) %}
+                    {% endif %}
+                    {%
+                        include ["forms/fields/#{fields[key]['type']}/#{fields[key]['type']}.html.twig", 'forms/fields/text/text.html.twig']
+                        with { value: val, field: newfield, scope: "data." }
+                    %}
+                {%- endfilter -%}
+            "
+            {% else %}
+                {% if val is not empty %} {% set prevVal = (json_encode({value: val})|e) %} data-select-array-old-value="{{ prevVal }}"{% endif %}
+            {% endif %}
+        {% endif %}
+
+
+        >
+        <select data-grav-select-array-type="key" {% if field.disabled or isDisabledToggleable %}disabled="disabled"{% endif %}>
+        {% if field.placeholder_key %}<option value="" disabled selected>{% if grav.twig.twig.filters['tu'] is defined %}{{ field.placeholder_key|tu|raw }}{% else %}{{ field.placeholder_key|t|raw }}{% endif %}</option>{% endif %}
+        </select>
+    </div>
+
+    <div class="form-select-array-value-wrapper" {#{% if key is not empty and val is not empty and key in fields|keys %}data-select-array-value-holder="{%- filter replace({'   ': ' ', '\n': ' '})|e('html_attr') -%}
+        {%
+        include ["forms/fields/#{fields[key]['type']}/#{fields[key]['type']}.html.twig", 'forms/fields/text/text.html.twig']
+        with { value: val }
+        %}
+    "{%- endfilter -%}{% endif %}#} >
+
+    </div>
+</div>

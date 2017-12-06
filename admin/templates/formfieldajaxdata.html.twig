@@ -1,0 +1,36 @@
+{#{% extends 'partials/base.html.twig' %}#}
+
+{% set field = POSTDATA.field %}
+{#{% set scope = scope ?: 'data.' %}
+{% set value = field.name ? data.value(field.name) : data.toArray %}#}
+
+{#{{ json_encode(field|raw)|raw }}#}
+
+{% if field is empty %}
+    {{ "NO FIELD" }}
+
+    {% set fakedata = '{"value":{"stuff":"things","cptn":"awesome"}}' %}
+
+    {{ fakedata }}
+
+    {% if (json_decode(fakedata, true)) is iterable %}
+        {{ "yes" }}
+    {% endif %}
+    {#{{ json_decode(fakedata).value }}#}
+
+    {% for key, text in json_decode(fakedata, true).value %}
+        {{ key|e }}
+        {{ value|e }}
+    {% endfor %}
+{% else %}
+    {% if field.type %}
+        {% set scope = scope ?: 'data.' %}
+        {% if POSTDATA.oldValue %}
+            {% set value = json_decode(POSTDATA.oldValue, true).value %}
+        {% endif %}
+        <div class="block block-{{ field.type }}">
+            {% include ["forms/fields/#{field.type}/#{field.type}.html.twig", 'forms/fields/text/text.html.twig'] %}
+        </div>
+    {% endif %}
+{% endif %}
+

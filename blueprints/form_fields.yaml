@@ -1,0 +1,48 @@
+form:
+  fields:
+    .name:
+      name: FieldName
+      type: text
+      label: Field Name
+      classes: fancy
+    .label:
+          name: FieldLabel
+          type: text
+          label: Field Label
+          classes: fancy
+          toggleable: true
+    .placeholder:
+          name: FieldPlaceholder
+          type: text
+          label: Field PlaceHolder
+          classes: fancy
+          toggleable: true
+    .autocomplete:
+          name: FieldAutocomplete
+          type: toggle
+          label: Field AutoComplete
+          highlight: 1
+          options:
+            1: PLUGIN_ADMIN.YES
+            0: PLUGIN_ADMIN.NO
+          validate:
+            type: bool
+          toggleable: true
+    .type:
+          name: FieldType
+          type: select
+          label: Field Type
+          classes: fancy
+          options:
+            text: Text
+            textarea: Text Area
+    .validate.required:
+          name: FieldRequired
+          type: toggle
+          label: Field Required
+          highlight: 1
+          options:
+            1: PLUGIN_ADMIN.YES
+            0: PLUGIN_ADMIN.NO
+          validate:
+            type: bool

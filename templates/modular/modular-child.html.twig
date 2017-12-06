@@ -1,0 +1,56 @@
+{% if(header.section["class"]) %}
+    {% set sectionClass = ("class='" ~ header.section["class"] ~ "'") %}
+{% endif %}
+
+{% set sectionExtradata = "" %}
+{% if(header.section['extra']) %}
+    {{ dump(header.section['extra']) }}
+
+    {% for key, value in header.section['extra'] %}
+        {% set sectionExtradata = (sectionExtradata ~ key ~ '="' ~ value ~ '" ') %}
+    {% endfor %}
+{% endif %}
+
+
+{% if(header.content["class"]) %}
+    {% set contentClass = ("class='" ~ header.content["class"] ~ "'") %}
+{% endif %}
+
+{% set contentExtradata = "" %}
+{% if(header.content['extra']) %}
+    {% for key, value in header.content['extra'] %}
+        {% set contentExtradata = (contentExtradata ~ key ~ '="' ~ value ~ '" ') %}
+    {% endfor %}
+{% endif %}
+
+
+{% set sectionStyleData = "" %}
+{% if header.section['style'] %}
+    {% set sectionStyleData = "style='" %}
+    {% for key, value in header.section['style'] %}
+        {% set sectionStyleData = (sectionStyleData ~ key ~ ': ' ~ value ~ '; ') %}
+    {% endfor %}
+    {% set sectionStyleData = (sectionStyleData ~ "'") %}
+{% endif %}
+
+{% set contentStyleData = "" %}
+{% if header.content['style'] %}
+    {% set contentStyleData = "style='" %}
+    {% for key, value in header.content['style'] %}
+        {% set contentStyleData = (contentStyleData ~ key ~ ': ' ~ value ~ '; ') %}
+    {% endfor %}
+    {% set contentStyleData = (contentStyleData ~ "'") %}
+{% endif %}
+
+
+<section {{ sectionClass }} {{ sectionStyleData }} {{ sectionExtradata }}>
+    <div>
+        <div {{ contentClass }} {{contentStyleData}} {{ contentExtradata }}>
+            {{ dump(collection()) }}
+            {% for module in page.collection() %}
+                {{ module.content }}
+            {% endfor %}
+            {% include "forms/form.html.twig" %}
+        </div>
+    </div>
+</section>

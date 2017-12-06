@@ -1,0 +1,37 @@
+{% extends "forms/field.html.twig" %}
+
+{% block global_attributes %}
+    data-grav-advanced-array-name="{{ (scope ~ field.name)|fieldName }}"
+    data-grav-advanced-array-keyname="{{ field.placeholder_key|e|tu }}"
+    data-grav-advanced-array-valuename="{{ field.placeholder_value|e|tu }}"
+    {{ parent() }}
+{% endblock %}
+
+{% block input %}
+
+    {% import _self as array_field %}
+    <div
+        data-grav-advanced-array-type="container" {{ value|length <= 1 ? ' class="one-child"' : '' }}
+        {% if field.settings %}
+            data-select-array-settings="{{ json_encode(field.settings) }}"
+        {% endif %}
+        data-select-array-options="{{ json_encode(field.options) }}"
+    >
+        {% if value|length %}
+            {% for key, text in value -%}
+                {%
+                include 'forms/fields/selectArray.html.twig'
+                with { key: key, val: text, fields: field.options, selectFieldName: field.name ~ "." }
+                %}
+                {#{{ dump(scope ~ field.name ~ ".") }}#}
+            {% endfor %}
+        {%- else -%}
+            {# Empty value, mock the entry field #}
+
+            {%
+            include 'forms/fields/selectArray.html.twig'
+            %}
+
+        {%- endif %}
+    </div>
+{% endblock %}

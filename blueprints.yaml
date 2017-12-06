@@ -1,0 +1,14 @@
+name: Modular Section
+version: 0.1.0
+description: Adds a customizable styleable modular section
+icon: tasks
+author:
+  name: Dalen Catt
+  email: dalen@cascadeap.com
+  url: http://cascadeap.com
+homepage:
+keywords: admin, style, managment, plugin
+bug:
+license: MIT
+dependencies:
+  - { name: grav, version: '>=1.3.0' }

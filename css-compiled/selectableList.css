@@ -1,0 +1,13 @@
+form [data-grav-field="selectableList"] .form-list-wrapper [data-collection-holder] [data-collection-item] {
+  padding: 3rem; }
+  form [data-grav-field="selectableList"] .form-list-wrapper [data-collection-holder] [data-collection-item] input[type=text] {
+    width: 40%;
+    float: left;
+    margin: 0 5px 5px 0; }
+  form [data-grav-field="selectableList"] .form-list-wrapper [data-collection-holder] [data-collection-item] .form-select-wrapper {
+    float: left;
+    width: 40%; }
+  form [data-grav-field="selectableList"] .form-list-wrapper [data-collection-holder] [data-collection-item] [data-grav-select-array-type="row"]:not(.selectMultiline) > .form-select-array-value-wrapper {
+    width: 100%; }
+
+/*# sourceMappingURL=selectableList.css.map */
